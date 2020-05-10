@@ -1,22 +1,30 @@
+const startTime = new Date();
+const intervalMsec = 20 * 1000;
+setInterval(updateClock, 16);
+function updateClock() {
+    const clock = document.querySelector('.clock');
+    clock.innerText = (intervalMsec - (new Date() - startTime))/1000;
+}
+
+
 const btnDigits = document.querySelectorAll('.digits button');
 btnDigits.forEach( digit => digit.addEventListener('click', digitPressed));
-
 const display = document.querySelector('.display');
 
 function digitPressed(ev) {
    display.value += ev.target.innerText;
 }
 
-const btnDecimal = document.querySelectorAll('.decimal button');
-btnDecimal.forEach( digit => digit.addEventListener('click', decimalPressed));
- 
-function decimalPressed() {
-   display.value += ;
-}
-
-
+const btnOpers = document.querySelectorAll('.opers button');
+btnOpers.forEach( digit => digit.addEventListener('click', operPressed));
 function operPressed(ev) {
    display.value += ev.target.innerText;
+}
+
+const btnClear = document.querySelectorAll('.clear button');
+btnClear.forEach( digit => digit.addEventListener('click', clearPressed)); 
+function clearPressed() {
+    display.value += 0;
 }
 
 const btnEq = document.querySelector('.eq');
